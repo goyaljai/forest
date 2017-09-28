@@ -211,7 +211,10 @@ namespace forest {
                         return nullptr;
                 }
                 
-                
+                /**
+                 * @brief Deletes the node with the given key
+                 * // utility inorder function
+                 */
                 binary_search_tree_node <key_t,value_t> *minValueNode(binary_search_tree_node <key_t, value_t> *node)
                 {
                     binary_search_tree_node <key_t, value_t> *current = node;
@@ -221,6 +224,11 @@ namespace forest {
 
                     return current;
                 }
+                
+                /**
+                 * @brief Deletes the node with the given key
+                 *
+                 */
 
                 const binary_search_tree_node <key_t,value_t> *delete(key_t key)
                 {
