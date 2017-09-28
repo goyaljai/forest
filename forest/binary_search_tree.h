@@ -210,6 +210,61 @@ namespace forest {
                         }
                         return nullptr;
                 }
+                
+                /**
+                 * @brief Deletes the node with the given key
+                 * // utility inorder function
+                 */
+                binary_search_tree_node <key_t,value_t> *minValueNode(binary_search_tree_node <key_t, value_t> *node)
+                {
+                    binary_search_tree_node <key_t, value_t> *current = node;
+
+                    while (current->left != nullptr)
+                        current = current->left;
+
+                    return current;
+                }
+                
+                /**
+                 * @brief Deletes the node with the given key
+                 *
+                 */
+
+                const binary_search_tree_node <key_t,value_t> *delete(key_t key)
+                {
+                        if (root == nullptr) return root;
+
+                        if(key < root->key)
+                        {
+                                root->left = delete(root->left,key);
+                        }
+                        else
+                        {
+                                root->right = delete(root->right,key);
+                        }
+                        else
+                        {
+                                if (root->left == nullptr)
+                        {
+                            binary_search_tree_node <key_t, value_t> *temp = root->right;
+                            return temp;
+                        }
+                        else if (root->right == nullptr)
+                        {
+                            binary_search_tree_node <key_t, value_t> *temp = root->left;
+                            return temp;
+                        }
+                        // inorder
+                        binary_search_tree_node <key_t, value_t> *temp = minValueNode(root->right);
+                        root->key = temp->key;
+
+                        root->right = deleteNode(root->right, temp->key);
+
+                        }return root;
+
+                }
+                
+                
                 /**
                  * @brief Finds the node with the minimum key
                  * @return The node with the minimum key
